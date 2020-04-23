@@ -124,3 +124,10 @@ yarn add react-native-gesture-handler --save
 ```
 yarn add react-native-safe-area-context react-native-screens --save
 ```
+
+## Install react-navigation, react-navigation-stack and @react-native-community/masked-view
+
+```
+yarn add react-navigation react-navigation-stack @react-native-community/masked-view --save
+```
+
