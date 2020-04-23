@@ -1,5 +1,5 @@
-import React from 'react';
-import {createAppContainer} from 'react-navigation';
+import React, { ComponentType } from 'react';
+import {createAppContainer, NavigationInjectedProps, NavigationParams} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 /* Add navigation library (only the methods that we need)
   stackNavigator shows automaticaly different screens, and a header at the top of each screen with a back arrow (used to go to previous screen)
@@ -31,8 +31,7 @@ const AppNavigator = createStackNavigator(
    createAppContainer(navigator) make sure that what we are exporting is a react app component, because we have to export a component! */
 export const NavigationContainer = createAppContainer(AppNavigator);
 
-export function setupReduxContainer(component) {
-  const Container = component; 
+export function setupReduxContainer(Container: ComponentType<Pick<NavigationInjectedProps<NavigationParams>, never>>) {
   return connect(
     state => ({ ...state })
   )(props => <Container {...props} />);

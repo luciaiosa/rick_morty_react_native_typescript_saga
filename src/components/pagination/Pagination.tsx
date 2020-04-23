@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import { PAGE_BOUND_NUMBER_PAGINATION } from "../constants/AppLists";
+import { PAGE_BOUND_NUMBER_PAGINATION } from "../../constants/AppLists";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 interface PagerProps {

@@ -15,7 +15,7 @@ import {
     CharacterStore,
     Character
 } from "../../store/characters";
-import Pagination from '../../components/Pagination';
+import Pagination from '../../components/pagination/Pagination';
 
 const CharactersListScreen: FunctionComponent = (): JSX.Element => {
     const [searchTerm, setSearchTerm] = useState<string>("");

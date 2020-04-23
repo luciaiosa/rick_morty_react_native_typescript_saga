@@ -130,4 +130,3 @@ yarn add react-native-safe-area-context react-native-screens --save
 ```
 yarn add react-navigation react-navigation-stack @react-native-community/masked-view --save
 ```
-

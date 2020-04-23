@@ -6,6 +6,7 @@ import {withNavigation} from 'react-navigation';
 import ResultDetail from './ResultDetail';
 import {Character} from '../store/characters/CharacterStore';
 import image from "../../assets/first_episode.png";
+import {margin, fonts} from '../styles/base';
 
 interface ResultsListProps {
     title: string, 
@@ -58,13 +59,13 @@ const ResultsList: FunctionComponent<ResultsListProps> = ({title, results, navig
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 10
+        marginBottom: margin.sm
     },
     title: {
-        fontSize: 18,
+        fontSize: fonts.md,
         fontWeight: 'bold',
-        marginLeft: 15,
-        marginBottom: 5
+        marginLeft: margin.md,
+        marginBottom: margin.md
     }
 })
 // Usaré withNavigation para envolver el componente para devolver una nueva versión del componente que tendrá el acceso de navigacion agregado automaticamente

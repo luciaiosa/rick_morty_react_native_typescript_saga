@@ -6,12 +6,19 @@ export const dimensions = {
 }
   
 export const colors  = {
-  primary: '#226B74',
-  secondary: '#254B5A',
+  primary: '#ff01c1', // rosa
+  secondary: '#1dc9dd', // azul
   tertiary: '#5DA6A7'
 }
 
 export const padding = {
+  sm: 10,
+  md: 20,
+  lg: 30,
+  xl: 40
+}
+
+export const margin = {
   sm: 10,
   md: 20,
   lg: 30,
