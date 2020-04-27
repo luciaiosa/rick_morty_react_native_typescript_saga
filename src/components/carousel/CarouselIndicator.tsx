@@ -1,4 +1,7 @@
 import React, { FunctionComponent } from "react";
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Text } from 'react-native';
+import { styles } from './CarouselStyles';
 
 interface CarouselIndicatorProps {
     index: number;
@@ -9,17 +12,18 @@ interface CarouselIndicatorProps {
 const CarouselIndicator: FunctionComponent<CarouselIndicatorProps> = (
     props: CarouselIndicatorProps
 ): JSX.Element => {
+
+    const className = () => {
+        let className;
+        className = props.index === props.activeIndex
+                        ? styles.carouselIndicatorActive
+                        : styles.carouselIndicator;
+        return className;
+    }
     return (
-        <li key={props.index}>
-            <button
-                className={
-                    props.index === props.activeIndex
-                        ? "carousel__indicator carousel__indicator--active"
-                        : "carousel__indicator"
-                }
-                onClick={() => props.onIndicatorSelected(props.index)}
-            ></button>
-        </li>
+        <TouchableOpacity onPress={() => props.onIndicatorSelected(props.index)}>
+            <Text style={className()}></Text>
+        </TouchableOpacity>
     );
 };
 

@@ -19,13 +19,15 @@ export const styles = StyleSheet.create({
     content: {
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "space-around",
         alignItems: "center",
         padding: padding.md,
         borderColor: colors.secondary,
         borderStyle: "solid",
         borderWidth: 1,
-        margin: margin.md
+        margin: margin.sm,
+        marginTop: margin.lg,
+        height: dimensions.fullHeight * 0.4
     },
     description: {
         fontSize: fonts.md,

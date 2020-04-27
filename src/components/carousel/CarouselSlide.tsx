@@ -1,46 +1,37 @@
 import React, { FunctionComponent } from "react";
-import { GridListTileBar, CardActionArea } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { Slide } from "./Carousel";
+import { Slide } from '../../constants/HomeSlides';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Image, Text, StyleProp, ViewStyle } from 'react-native';
+import { withNavigation } from 'react-navigation';
+import {styles} from './CarouselStyles';
 
 interface CarouselSlideProps {
     index: number;
     activeIndex: number;
     slide: Slide;
+    navigation: any;
 }
 
 const CarouselSlide: FunctionComponent<CarouselSlideProps> = (
-    props: CarouselSlideProps
+    {slide, navigation, index, activeIndex}: CarouselSlideProps
 ): JSX.Element => {
+
+    const className = (): StyleProp<ViewStyle> => {
+        let className = index === activeIndex
+                            ? styles.carouselSlideActive
+                            : styles.carouselSlide;
+        return className;
+    }
+
     return (
-        <li
-            key={props.index}
-            className={
-                props.index === props.activeIndex
-                    ? "carousel__slide carousel__slide--active"
-                    : "carousel__slide"
-            }
-        >
-            <CardActionArea>
-                <img
-                    src={props.slide.image.source}
-                    alt={props.slide.image.alt}
-                    width={800}
-                    height={500}
-                />
-                <Link to={props.slide.linkUrl} className="header">
-                    <GridListTileBar
-                        title={props.slide.title}
-                        subtitle={props.slide.subtitle}
-                        style={{
-                            height: 130,
-                            fontWeight: 600
-                        }}
-                    />
-                </Link>
-            </CardActionArea>
-        </li>
+        <TouchableOpacity onPress={() => navigation.navigate(`${slide.linkUrl}`)} key={slide.id}>
+            <View style={styles.carouselSlideActive}>
+                <Image source={slide.imageSource} style={styles.image} />
+                <Text style={styles.title} >{slide.title}</Text>
+                <Text>{slide.subtitle}</Text>
+            </View>
+        </TouchableOpacity> 
     );
 };
 
-export default CarouselSlide;
+export default withNavigation(CarouselSlide);

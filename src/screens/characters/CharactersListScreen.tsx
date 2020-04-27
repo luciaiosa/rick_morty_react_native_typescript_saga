@@ -3,11 +3,9 @@
 
 import React, {FunctionComponent, useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import {ScrollView, StyleSheet, View} from 'react-native';
-// ScrollView detecta que tiene demasiado contenido dentro para que quepa en la
-// pantalla al mismo tiempo, y habilitará automáticamente el scroll (desplazamiento).
-import SearchBar from '../../components/SearchBar';
-import ResultsList from '../../components/ResultsList';
+import {View} from 'react-native';
+import SearchBar from '../../components/searchBar/SearchBar';
+import ResultsList from '../../components/resultsList/ResultsList';
 import { AppStore, BreadCrumb } from "../../store/app/AppStore";
 import { setBreadcrumbs } from "../../store/app";
 import {
@@ -16,6 +14,7 @@ import {
     Character
 } from "../../store/characters";
 import Pagination from '../../components/pagination/Pagination';
+import { styles } from '../../styles/lists';
 
 const CharactersListScreen: FunctionComponent = (): JSX.Element => {
     const [searchTerm, setSearchTerm] = useState<string>("");
@@ -90,9 +89,7 @@ const CharactersListScreen: FunctionComponent = (): JSX.Element => {
     };
 
     return (
-        //  Esto se puede escribir como un tag vacio, que por defecto coge solo el espacio que hay en la pantalla
-        // <View style={{flex: 1}}>
-        <>
+        <View style={styles.root}> 
             <SearchBar
                 searchTerm={searchTerm}
                 onSearchTermChange={(value: string) =>
@@ -101,7 +98,7 @@ const CharactersListScreen: FunctionComponent = (): JSX.Element => {
             />
             {renderList()}
             {renderPagination()}
-        </>
+        </View>
     )
 };
 

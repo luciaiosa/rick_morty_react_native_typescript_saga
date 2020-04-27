@@ -1,12 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import {Provider} from 'react-redux';
 // FlatList es un componente de react native que se utiliza cuando se necesita scrollable list de datos
-import {View, Text, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import {withNavigation} from 'react-navigation';
-import ResultDetail from './ResultDetail';
-import {Character} from '../store/characters/CharacterStore';
-import image from "../../assets/first_episode.png";
-import {margin, fonts} from '../styles/base';
+import ResultDetail from '../resultDetail/ResultDetail';
+import {Character} from '../../store/characters/CharacterStore';
+import image from "../../../assets/first_episode.png";
+import { styles } from './ResultsListStyles';
 
 interface ResultsListProps {
     title: string, 
@@ -32,9 +31,10 @@ const ResultsList: FunctionComponent<ResultsListProps> = ({title, results, navig
             return <View></View>;
         }
         return (
-            <View style={styles.container}>
+            <View>
                 <Text style={styles.title}>{title}</Text>
                 <FlatList  
+                    horizontal
                     showsHorizontalScrollIndicator={false}
                     data={results}
                     keyExtractor={(result) => result.id.toString()}
@@ -52,21 +52,9 @@ const ResultsList: FunctionComponent<ResultsListProps> = ({title, results, navig
     }
     
     return (
-        <View>{renderResultsList()}</View>
-            
+        <View style={styles.container}>{renderResultsList()}</View>            
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        marginBottom: margin.sm
-    },
-    title: {
-        fontSize: fonts.md,
-        fontWeight: 'bold',
-        marginLeft: margin.md,
-        marginBottom: margin.md
-    }
-})
 // Usaré withNavigation para envolver el componente para devolver una nueva versión del componente que tendrá el acceso de navigacion agregado automaticamente
 export default withNavigation(ResultsList);

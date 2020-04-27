@@ -1,14 +1,18 @@
 import {Dimensions} from 'react-native';
 
+const { width, height } = Dimensions.get('window');
+
 export const dimensions = {
-  fullHeight: Dimensions.get('window').height,
-  fullWidth: Dimensions.get('window').width
+  fullHeight: height,
+  fullWidth: width,
+  halfWidth: width * 0.5,
+  halfHeight: height * 0.5
 }
   
 export const colors  = {
   primary: '#ff01c1', // rosa
   secondary: '#1dc9dd', // azul
-  tertiary: '#5DA6A7'
+  tertiary: '#ff01c1'
 }
 
 export const padding = {

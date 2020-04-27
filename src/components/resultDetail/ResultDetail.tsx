@@ -1,6 +1,8 @@
 import React, {FunctionComponent} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
-import {Character} from '../store/characters/CharacterStore';
+import {View, Text, Image} from 'react-native';
+import {Character} from '../../store/characters/CharacterStore';
+import {styles} from './ResultDetailStyles';
+import { formattedDate } from '../../utils/dates';
 
 interface ResultDetailProps { 
     result: Character,
@@ -13,23 +15,9 @@ const ResultDetail: FunctionComponent<ResultDetailProps> = ({result, imageSource
             <Image source={{uri: imageSource}} style={styles.image} />
             <Text style={styles.name} >{result.name}</Text>
             <Text>Id: {result.id} - created:{" "}
-                                {result.created}</Text>
+            {formattedDate(result.created)}</Text>
         </View>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        marginLeft: 15
-    },
-    image: {
-        width: 250, 
-        height: 150,
-        borderRadius: 4,
-        marginBottom: 5
-    },
-    name: {
-        fontWeight: 'bold'
-    }
-});
  export default ResultDetail;

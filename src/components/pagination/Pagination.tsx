@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import { PAGE_BOUND_NUMBER_PAGINATION } from "../../constants/AppLists";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { colors } from '../../styles/base';
 
 interface PagerProps {
     pageNumbers: Array<number>;
@@ -18,7 +19,7 @@ const Pagination: FunctionComponent<PagerProps> = (
     const [nextButtonDisabled, setNextButtonDisabled] = useState<string>("");
     const [ellipseUpperPagesNumber, setEllipseUpperPagesNumber] = useState<
         number
-    >(10);
+    >(3);
     const [ellipseLowerPagesNumber, setEllipseLowerPagesNumber] = useState<
         number
     >(0);
@@ -165,53 +166,41 @@ const Pagination: FunctionComponent<PagerProps> = (
             );
         }
     };
-    /* const renderPageNumbers = () => {
+    const renderPageNumbers = () => {
         return props.pageNumbers.map((number: number) => {
             if (
                 (number === 1 && selectedPage === 1) ||
                 number === props.currentPage
             ) {
                 return (
-                    <li
+                    <TouchableOpacity onPress={() => changeSelectedPage(number)}
                         key={number}
-                        value={number}
-                        onClick={event =>
-                            changeSelectedPage(
-                                Number((event.target as HTMLLIElement).value)
-                            )
-                        }
-                        className={classes.activePaginationListItem}
+                        style={classes.activePaginationListItem}
                     >
-                        {number}
-                    </li>
+                        <Text>{number}</Text>
+                    </TouchableOpacity>
                 );
             } else if (
                 number < ellipseUpperPagesNumber + 1 &&
                 number > ellipseLowerPagesNumber
             ) {
                 return (
-                    <li
+                    <TouchableOpacity onPress={() => changeSelectedPage(number)}
                         key={number}
-                        value={number}
-                        onClick={event =>
-                            changeSelectedPage(
-                                Number((event.target as HTMLLIElement).value)
-                            )
-                        }
-                        className={classes.paginationListItem}
+                        style={classes.paginationListItem}
                     >
-                        {number}
-                    </li>
+                        <Text>{number}</Text>
+                    </TouchableOpacity>
                 );
             }
         });
-    }; */
+    }; 
     return (
         <View style={classes.center}>
             <View style={classes.paginationList}>
                 {renderPrevButton()}
                 {renderPageDecrementButton()}
-                {/* {renderPageNumbers()} */}
+                {renderPageNumbers()} 
                 {renderPageIncrementButton()}
                 {renderNextButton()}
             </View>
@@ -222,41 +211,69 @@ const Pagination: FunctionComponent<PagerProps> = (
 const classes = StyleSheet.create({
     center: {
         marginBottom: 10,
-        marginTop: 10,
-        display: "flex",
-        justifyContent: "center"
+        marginTop: 10
     },
 
     paginationList: {
-        /* color: "black", */
-        /* float: "left", */
-        /* padding: "8px 16px", */
-        /* textDecoration: "none", */
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "black", 
+        paddingTop: 8,
+        paddingBottom: 8,
+        paddingLeft: 16, 
+        paddingRight: 16,
+        /* padding: "8px 16px",  */
+        /* textDecoration: "none",  */
         /* transition: "background-color 0.3s", */
         /* border: "1px solid #ddd" */
+        borderColor: "#ddd",
+        borderStyle: "solid",
+        borderWidth: 1,
     },
 
     paginationListItem: {
-        /* color: "black", */
-        /* float: "left", */
+        color: "black", 
         /* padding: "8px 16px", */
+        paddingTop: 8,
+        paddingBottom: 8,
+        paddingLeft: 16, 
+        paddingRight: 16,
         /* textDecoration: "none",
         transition: "background-color 0.3s",
         border: "1px solid #ddd", */
-        /* cursor: "pointer",
-        "&:hover": {
+        borderColor: "#ddd",
+        borderStyle: "solid",
+        borderWidth: 1,
+        /* cursor: "pointer" */
+/*         "&:hover": {
             backgroundColor: "#ccccb3"
-        } */
+        }  */
     },
     activePaginationListItem: {
+        paddingTop: 8,
+        paddingBottom: 8,
+        paddingLeft: 16, 
+        paddingRight: 16,
         backgroundColor: "#ff01c1",
         color: "white",
-        /* border: "border: 1px solid #ff01c1", */
+        /* border: 1px solid #ff01c1", */
+        borderColor: colors.tertiary,
+        borderStyle: "solid",
+        borderWidth: 1,
         /* "&:hover": {
             backgroundColor: "#cc0052"
         } */
     },
     disabledPaginationListItem: {
+        borderColor: "#ddd",
+        borderStyle: "solid",
+        borderWidth: 1,
+        paddingTop: 8,
+        paddingBottom: 8,
+        paddingLeft: 16, 
+        paddingRight: 16,
         /* pointerEvents: "none", */
         opacity: 0.6,
         /* cursor: "not-allowed" */
