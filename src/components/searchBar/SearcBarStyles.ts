@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { margin } from '../../styles/base';
 
 export const styles = StyleSheet.create({
     containerStyle: {
@@ -7,8 +8,7 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         marginHorizontal: 15,
         flexDirection: 'row',
-        marginTop: 10,
-        marginBottom: 10
+        marginTop: margin.sm
     },
     inputStyle: {
         flex: 1,

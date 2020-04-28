@@ -4,18 +4,17 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
     root: {
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         overflow: "visible",
         flexDirection: "column",
-        minHeight: dimensions.fullHeight * 0.75
+        minHeight: dimensions.fullHeight * 0.7
     },
     container: {
         display: "flex",
         justifyContent: "center",
         alignContent: "center",
         overflow: "visible",
-        flexDirection: "column",
-        minHeight: dimensions.fullHeight * 0.75
+        flexDirection: "column"
     },
     gridList: {
         width: dimensions.fullWidth,

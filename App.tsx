@@ -64,6 +64,6 @@ export function setupReduxContainer(Container: ComponentType<Pick<NavigationInje
 export default () => (
   <Provider store={store}>
     <NavigationContainer />
-    {/* <Footer content={literals.footerContent}></Footer> */}
+    <Footer content={literals.footerContent}></Footer>
   </Provider>
 );

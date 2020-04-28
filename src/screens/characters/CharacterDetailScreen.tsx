@@ -6,37 +6,39 @@ import { AppStore, BreadCrumb, setBreadcrumbs } from '../../store/app';
 import { characterByIdRequest, clearCharacterSelected } from '../../store/characters';
 import { withNavigation } from 'react-navigation';
 import {styles} from '../../styles/descriptions';
-import { fonts, margin } from '../../styles/base';
+import { fonts, margin, dimensions } from '../../styles/base';
 import { formattedDate } from '../../utils/dates';
 import Error from '../../components/error/Error';
+import Header from '../../components/header/Header';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 
 interface CharacterDetailProps { navigation: any };
 
 const CharacterDetailScreen: FunctionComponent<CharacterDetailProps> = ({navigation}: CharacterDetailProps): JSX.Element => {
-    const {selectedCharacter, hasError, errorMessage } = useSelector<AppStore, CharacterStore>(state => state.characterStore);
+    const {selectedCharacter, hasError, errorMessage, loading } = useSelector<AppStore, CharacterStore>(state => state.characterStore);
     /* A hook to access the redux `dispatch` function. */
     const dispatch = useDispatch();
+    const {id} = navigation.state.params;
+        
+    const breadCrumbs: BreadCrumb[] = [
+        {
+            key: "Home",
+            label: "Home",
+            link: "HomeScreen"
+        },
+        {
+            key: "CharacterList",
+            label: "Characters",
+            link: "CharactersListScreen"
+        },
+        {
+            key: "CharacterDetail",
+            label: "Character Info",
+            link: null
+        }
+    ];
 
     useEffect(() => {
-        const {id} = navigation.state.params;
-        
-        const breadCrumbs: BreadCrumb[] = [
-            {
-                key: "Home",
-                label: "Home",
-                link: "/"
-            },
-            {
-                key: "CharacterList",
-                label: "Characters",
-                link: "/characters"
-            },
-            {
-                key: "CharacterDetail",
-                label: "Character Info",
-                link: null
-            }
-        ];
         dispatch(setBreadcrumbs(breadCrumbs));
         dispatch(characterByIdRequest(parseInt(id)));
         //ComponentWillUnMount()
@@ -103,9 +105,19 @@ const CharacterDetailScreen: FunctionComponent<CharacterDetailProps> = ({navigat
     }
 
     return (
-        <View style={styles.root}>
-            <View style={styles.container}>
-                {renderContent()}
+        <View style={{minHeight: dimensions.fullHeight}}>
+            {loading ? (
+                <View><Text>Spinner</Text></View>               
+            ) : null}
+            <View>
+                <Header>
+                    <Breadcrumbs items={breadCrumbs} /> 
+                </Header>
+                <View style={styles.root}>
+                    <View style={styles.container}>
+                        {renderContent()}
+                    </View>
+                </View>
             </View>
         </View>
     )

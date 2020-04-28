@@ -4,15 +4,13 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
     root: {
         display: "flex",
-        flexWrap: "wrap",
         justifyContent: "space-around",
-        overflow: "hidden",
+        overflow: "visible",
         flexDirection: "column",
         minHeight: dimensions.fullHeight * 0.75
     },
     container: {
         display: "flex",
-        flexWrap: "wrap",
         justifyContent: "flex-start",
         alignContent: "center",
         overflow: "hidden",
@@ -24,14 +22,15 @@ export const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: padding.xl,
+        padding: padding.md,
         /* border: "1px solid #1dc9dd", */
         borderColor: colors.secondary,
         borderStyle: "solid",
         borderWidth: 1,
         marginLeft: margin.lg,
         marginBottom: margin.lg,
-        marginRight: margin.lg
+        marginRight: margin.lg,
+        marginTop: margin.lg
     },
     gridList: {
         width: dimensions.fullWidth,
@@ -51,8 +50,7 @@ export const styles = StyleSheet.create({
         paddingLeft: padding.md
     },
     description: {
-        fontSize: fonts.md,
-        marginTop: margin.sm
+        fontSize: fonts.md
     },
     descriptionRow: {
         paddingTop: padding.sm,

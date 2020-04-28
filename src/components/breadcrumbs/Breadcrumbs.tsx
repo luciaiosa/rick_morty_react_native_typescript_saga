@@ -26,9 +26,9 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
         if (breadcrumb.link !== null) {
             return (
                 <View style={styles.breadcrumbsLinks} key={breadcrumb.key}>
-                    <TouchableOpacity onPress={() => navigation.navigate(`${breadcrumb.link}`)} style={styles.breadcrumbLink}
+                    <TouchableOpacity onPress={() => navigation.navigate(`${breadcrumb.link}`)} 
                         key={breadcrumb.link}>
-                        <Text>{breadcrumb.label}</Text>
+                        <Text style={styles.breadcrumbLink}>{breadcrumb.label}</Text>
                     </TouchableOpacity>
                     <Text
                         style={styles.breadcrumbLine}

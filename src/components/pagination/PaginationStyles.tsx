@@ -20,6 +20,7 @@ export const classes = StyleSheet.create({
         borderColor: "#ddd",
         borderStyle: "solid",
         borderWidth: 1,
+        marginBottom: 20
     },
 
     paginationListItem: {

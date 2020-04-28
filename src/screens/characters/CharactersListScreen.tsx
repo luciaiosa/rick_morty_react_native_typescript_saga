@@ -36,7 +36,7 @@ const CharactersListScreen: FunctionComponent = (): JSX.Element => {
         {
             key: "Home",
             label: "Home",
-            link: "/"
+            link: "HomeScreen"
         },
         {
             key: "CharacterList",
@@ -97,9 +97,9 @@ const CharactersListScreen: FunctionComponent = (): JSX.Element => {
                 <View><Text>Spinner</Text></View>               
             ) : null}
             <View>
-                {/* <Header>
+                <Header>
                     <Breadcrumbs items={breadCrumbs} /> 
-                </Header> */}
+                </Header>
                 <View style={styles.root}> 
                     <SearchBar
                         searchTerm={searchTerm}
