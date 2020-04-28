@@ -17,7 +17,7 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
             const breadcrumbsItems = items.map(breadcrumb => {
                 return renderLink(breadcrumb);
             });
-            return <View>{breadcrumbsItems}</View>;
+            return <View style={styles.breadcrumbsLinks}>{breadcrumbsItems}</View>;
         }
         return <View></View>;
     };
@@ -31,7 +31,7 @@ const Breadcrumbs = (props: BreadcrumbsProps) => {
                         <Text>{breadcrumb.label}</Text>
                     </TouchableOpacity>
                     <Text
-                        style={styles.breadcrumbSpan}
+                        style={styles.breadcrumbLine}
                     >
                         {" "}
                         /{" "}

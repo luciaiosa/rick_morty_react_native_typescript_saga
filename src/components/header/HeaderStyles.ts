@@ -1,41 +1,42 @@
 import { StyleSheet } from 'react-native';
+import { padding } from '../../styles/base';
 
 export const styles = StyleSheet.create({
     linksContainer: {
-        marginTop: 30,
         backgroundColor: "#ff01c1",
-        paddingTop: 15,
-        paddingLeft: 20,
-        height: 100,
+        paddingLeft: 10,
+        height: 80,
         display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start"
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-around",
     },
-    menuContainer :{
-        // border-bottom: 2px solid rgba(34, 36, 38, 0.15);
+    logoContainer :{
         borderRadius: 0,
         display: "flex",
-        padding: 30,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-around",
         fontFamily: "Arial, Helvetica, sans-serif",
-        fontWeight: "600",
-        /* minHeight: 3rem */
+        fontWeight: "600"
     },
     logo : {
-        width: 150,
-        height: 120
+        width: 70,
+        height: 20
     },
     headerBreadcrumbsContainer : {
-        paddingLeft: 205,
         fontSize: 18,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-around",
     },
     linkMenu: {
         /* textDecoration: "none", */
         fontWeight: "400",
         fontSize: 24,
         color: "#424548",
-        marginRight: 20,
-        alignSelf: "center",
-        paddingLeft: 10,
+        alignSelf: "flex-start",
 /*         "&:hover": {
             color: "white"
         } */

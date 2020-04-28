@@ -20,8 +20,7 @@ export const styles = StyleSheet.create({
     },
     carousel: {
         position: "relative",
-        marginBottom: 20,
-        marginTop: 20
+        marginBottom: 20
     }, 
     carouselSlides: {
         padding: 0,

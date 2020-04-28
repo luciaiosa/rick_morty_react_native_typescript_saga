@@ -11,14 +11,14 @@ interface MenuProps {
 const Menu = ({navigation}: MenuProps): JSX.Element => {
     return (
         <View style={styles.linksContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('CharactersListScreen')} style={styles.linkMenu} key="characters">
-                <Text>Characters</Text>>
+            <TouchableOpacity onPress={() => navigation.navigate('CharactersListScreen')} style={styles.linkMenu}>
+                <Text>Characters</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('CharactersListScreen')} style={styles.linkMenu} key="locations">
-                <Text>Locations</Text>>
+            <TouchableOpacity onPress={() => navigation.navigate('CharactersListScreen')} style={styles.linkMenu}>
+                <Text>Locations</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('CharactersListScreen')} style={styles.linkMenu} key="episodes">
-                <Text>Episodes</Text>>
+            <TouchableOpacity onPress={() => navigation.navigate('CharactersListScreen')} style={styles.linkMenu}>
+                <Text>Episodes</Text>
             </TouchableOpacity>
         </View>
     );

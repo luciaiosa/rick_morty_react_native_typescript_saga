@@ -17,13 +17,13 @@ const Header: FunctionComponent<HeaderProps> = (
 ): JSX.Element => {
     return (
         <View style={styles.linksContainer}>
-            <View style={styles.menuContainer}>
+            <View style={styles.logoContainer}>
                 <TouchableOpacity onPress={() => props.navigation.navigate('HomeScreen')} style={styles.linkMenu}>
-                    <Image source={Logo}/>
-                </TouchableOpacity>
-                <Menu></Menu>
+                    <Image source={Logo} style={styles.logo}/>
+                </TouchableOpacity>              
             </View>
             <View style={styles.headerBreadcrumbsContainer}>
+                <Menu></Menu>
                 {props.children}
             </View>
         </View>

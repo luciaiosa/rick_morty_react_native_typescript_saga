@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         margin: margin.sm,
         marginTop: margin.lg,
-        height: dimensions.fullHeight * 0.4
+        height: dimensions.fullHeight * 0.3
     },
     description: {
         fontSize: fonts.md,
@@ -37,7 +37,6 @@ export const styles = StyleSheet.create({
     tilesContainer: {
         marginLeft: margin.md,
         marginRight: margin.md,
-        marginTop: margin.md
     },
     image: {
         width: 250, 
