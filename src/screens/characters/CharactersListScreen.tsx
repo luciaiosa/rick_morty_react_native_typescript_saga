@@ -3,7 +3,7 @@
 
 import React, {FunctionComponent, useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import SearchBar from '../../components/searchBar/SearchBar';
 import ResultsList from '../../components/resultsList/ResultsList';
 import { AppStore, BreadCrumb } from "../../store/app/AppStore";
@@ -15,6 +15,9 @@ import {
 } from "../../store/characters";
 import Pagination from '../../components/pagination/Pagination';
 import { styles } from '../../styles/lists';
+import { dimensions } from '../../styles/base';
+import Header from '../../components/header/Header';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 
 const CharactersListScreen: FunctionComponent = (): JSX.Element => {
     const [searchTerm, setSearchTerm] = useState<string>("");
@@ -24,7 +27,7 @@ const CharactersListScreen: FunctionComponent = (): JSX.Element => {
     and returns whatever data you want from it. It’s very similiar to mapStateToProps() 
     and it allows to store the return values inside a variable within the scope of the 
     functional components instead of passing down as props */
-    const { characters, pages, hasError, errorMessage } = useSelector<
+    const { characters, pages, hasError, errorMessage, loading } = useSelector<
         AppStore,
         CharacterStore
     >(state => state.characterStore);
@@ -89,15 +92,26 @@ const CharactersListScreen: FunctionComponent = (): JSX.Element => {
     };
 
     return (
-        <View style={styles.root}> 
-            <SearchBar
-                searchTerm={searchTerm}
-                onSearchTermChange={(value: string) =>
-                    onSearchBarValueChange(value)} 
-                onTermEndEditing={() => onSearchBarTerm()}  // cuando se pulsa Enter, o el botón de OK
-            />
-            {renderList()}
-            {renderPagination()}
+        <View style={{minHeight: dimensions.fullHeight}}>
+            {loading ? (
+                <View><Text>Spinner</Text></View>               
+            ) : null}
+            <View>
+                {/* <Header>
+                    <Breadcrumbs items={breadCrumbs} /> 
+                </Header> */}
+                <View style={styles.root}> 
+                    <SearchBar
+                        searchTerm={searchTerm}
+                        onSearchTermChange={(value: string) =>
+                            onSearchBarValueChange(value)} 
+                        onTermEndEditing={() => onSearchBarTerm()}  // cuando se pulsa Enter, o el botón de OK
+                    />
+                    {renderList()}
+                    {renderPagination()}
+                </View>
+            </View>
+            
         </View>
     )
 };

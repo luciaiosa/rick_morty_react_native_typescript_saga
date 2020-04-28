@@ -14,7 +14,6 @@ import Header from "../../components/header/Header";
 const HomeScreen: FunctionComponent = ({navigation}: any) => {
     const dispatch = useDispatch();
     const state = useSelector<AppStore, AppStore>(state => state);
-    const { breadcrumbs } = state;
     const charactersLoading: boolean = state.characterStore.loading;
 
     useEffect(() => {
@@ -28,7 +27,7 @@ const HomeScreen: FunctionComponent = ({navigation}: any) => {
             ) : null}
             <View>
                 <Header>
-                    <Breadcrumbs items={breadcrumbs} /> 
+                    <Breadcrumbs items={[]} /> 
                 </Header>
                 <View style={styles.root}> 
                     <View style={styles.container}>  

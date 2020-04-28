@@ -12,7 +12,7 @@ export const dimensions = {
 export const colors  = {
   primary: '#ff01c1', // rosa
   secondary: '#1dc9dd', // azul
-  tertiary: '#ff01c1'
+  tertiary: '#696969'
 }
 
 export const padding = {

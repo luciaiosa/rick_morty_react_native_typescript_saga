@@ -11,12 +11,23 @@ import CharacterDetailScreen from './src/screens/characters/CharacterDetailScree
 import CharactersListScreen from './src/screens/characters/CharactersListScreen';
 import Footer from './src/components/footer/Footer';
 import literals from './src/resources/literals.json';
+import { colors } from './src/styles/base';
 
 const AppNavigator = createStackNavigator(
   /* The first param is an object with all the screens that we are going to navigate through */
   {
     HomeScreen: {
       screen: setupReduxContainer(HomeScreen),
+      /* navigationOptions: {
+        title: 'Rick and Morty',  
+        headerStyle: {  
+            backgroundColor: colors.primary,  
+        },  
+        headerTintColor: '#ffffff',  
+        headerTitleStyle: {  
+          fontWeight: 'bold',  
+        },  
+      } */
     },
     CharacterDetailScreen: {
       screen: setupReduxContainer(CharacterDetailScreen),
@@ -29,7 +40,14 @@ const AppNavigator = createStackNavigator(
   {
     initialRouteName: 'HomeScreen',
     defaultNavigationOptions: {
-      title: 'Rick and Morty'  /* The title on the top of the screen. It can be different on each screen */
+      title: 'Rick and Morty'  /* The title on the top of the screen. It can be different on each screen */,
+      headerStyle: {  
+        backgroundColor: colors.primary,  
+      },  
+      headerTintColor: '#ffffff',  
+      headerTitleStyle: {  
+        fontWeight: 'bold',  
+      }, 
     }
   }
 );
@@ -46,6 +64,6 @@ export function setupReduxContainer(Container: ComponentType<Pick<NavigationInje
 export default () => (
   <Provider store={store}>
     <NavigationContainer />
-    <Footer content={literals.footerContent}></Footer>
+    {/* <Footer content={literals.footerContent}></Footer> */}
   </Provider>
 );

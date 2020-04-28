@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
     root: {
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "space-around",
         overflow: "visible",
         flexDirection: "column",
         minHeight: dimensions.fullHeight * 0.75

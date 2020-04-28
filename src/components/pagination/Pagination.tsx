@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import { PAGE_BOUND_NUMBER_PAGINATION } from "../../constants/AppLists";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { colors } from '../../styles/base';
+import { View, Text, TouchableOpacity } from "react-native";
+import {classes} from './PaginationStyles';
 
 interface PagerProps {
     pageNumbers: Array<number>;
@@ -95,7 +95,7 @@ const Pagination: FunctionComponent<PagerProps> = (
                     <View
                         style={classes.paginationListItem}
                     >
-                        <Text>&hellip;{" "}</Text>
+                        <Text style={classes.paginationListItemText}>&hellip;{" "}</Text>
                     </View>
                 </TouchableOpacity>
                 
@@ -109,7 +109,7 @@ const Pagination: FunctionComponent<PagerProps> = (
                     <View
                         style={classes.paginationListItem}
                     >
-                        <Text>&hellip;{" "}</Text>
+                        <Text style={classes.paginationListItemText}>&hellip;{" "}</Text>
                     </View>
                 </TouchableOpacity>
                 
@@ -119,11 +119,11 @@ const Pagination: FunctionComponent<PagerProps> = (
     const renderPrevButton = () => {
         if (prevButtonDisabled === "disabled") {
             return (
-                <TouchableOpacity>
+                <TouchableOpacity disabled={true}>
                     <View
                         style={classes.disabledPaginationListItem}
                     >
-                        <Text>&laquo;</Text>
+                        <Text style={classes.disabledPaginationListItemText}>&laquo;</Text>
                     </View>
                 </TouchableOpacity>
                 
@@ -134,7 +134,7 @@ const Pagination: FunctionComponent<PagerProps> = (
                     <View
                         style={classes.paginationListItem}
                     >
-                        <Text>&laquo;</Text>
+                        <Text style={classes.paginationListItemText}>&laquo;</Text>
                     </View>
                 </TouchableOpacity>
                 
@@ -144,11 +144,11 @@ const Pagination: FunctionComponent<PagerProps> = (
     const renderNextButton = () => {
         if (nextButtonDisabled === "disabled") {
             return (
-                <TouchableOpacity>
+                <TouchableOpacity disabled={true}>
                     <View
                         style={classes.disabledPaginationListItem}
                     >
-                        <Text>&raquo;</Text>
+                        <Text style={classes.disabledPaginationListItemText}>&raquo;</Text>
                     </View>
                 </TouchableOpacity>
                 
@@ -159,7 +159,7 @@ const Pagination: FunctionComponent<PagerProps> = (
                     <View
                         style={classes.paginationListItem}
                     >
-                        <Text>&raquo;</Text>
+                        <Text style={classes.paginationListItemText}>&raquo;</Text>
                     </View>
                 </TouchableOpacity>
                 
@@ -177,7 +177,7 @@ const Pagination: FunctionComponent<PagerProps> = (
                         key={number}
                         style={classes.activePaginationListItem}
                     >
-                        <Text>{number}</Text>
+                        <Text style={classes.activePaginationListItemText}>{number}</Text>
                     </TouchableOpacity>
                 );
             } else if (
@@ -189,7 +189,7 @@ const Pagination: FunctionComponent<PagerProps> = (
                         key={number}
                         style={classes.paginationListItem}
                     >
-                        <Text>{number}</Text>
+                        <Text style={classes.paginationListItemText}>{number}</Text>
                     </TouchableOpacity>
                 );
             }
@@ -208,75 +208,4 @@ const Pagination: FunctionComponent<PagerProps> = (
     );
 };
 
-const classes = StyleSheet.create({
-    center: {
-        marginBottom: 10,
-        marginTop: 10
-    },
-
-    paginationList: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-        color: "black", 
-        paddingTop: 8,
-        paddingBottom: 8,
-        paddingLeft: 16, 
-        paddingRight: 16,
-        /* padding: "8px 16px",  */
-        /* textDecoration: "none",  */
-        /* transition: "background-color 0.3s", */
-        /* border: "1px solid #ddd" */
-        borderColor: "#ddd",
-        borderStyle: "solid",
-        borderWidth: 1,
-    },
-
-    paginationListItem: {
-        color: "black", 
-        /* padding: "8px 16px", */
-        paddingTop: 8,
-        paddingBottom: 8,
-        paddingLeft: 16, 
-        paddingRight: 16,
-        /* textDecoration: "none",
-        transition: "background-color 0.3s",
-        border: "1px solid #ddd", */
-        borderColor: "#ddd",
-        borderStyle: "solid",
-        borderWidth: 1,
-        /* cursor: "pointer" */
-/*         "&:hover": {
-            backgroundColor: "#ccccb3"
-        }  */
-    },
-    activePaginationListItem: {
-        paddingTop: 8,
-        paddingBottom: 8,
-        paddingLeft: 16, 
-        paddingRight: 16,
-        backgroundColor: "#ff01c1",
-        color: "white",
-        /* border: 1px solid #ff01c1", */
-        borderColor: colors.tertiary,
-        borderStyle: "solid",
-        borderWidth: 1,
-        /* "&:hover": {
-            backgroundColor: "#cc0052"
-        } */
-    },
-    disabledPaginationListItem: {
-        borderColor: "#ddd",
-        borderStyle: "solid",
-        borderWidth: 1,
-        paddingTop: 8,
-        paddingBottom: 8,
-        paddingLeft: 16, 
-        paddingRight: 16,
-        /* pointerEvents: "none", */
-        opacity: 0.6,
-        /* cursor: "not-allowed" */
-    }
-})
 export default Pagination;
